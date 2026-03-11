@@ -1,0 +1,64 @@
+# CRUD operations
+
+### Read all users
+GET http://localhost:3000/user-api/users
+
+### Read a user by id
+GET http://localhost:3000/user-api/users/2
+
+### Create new user
+POST http://localhost:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id":1,
+    "name":"sri",
+    "age":19
+}
+
+### Update a user
+PUT http://localhost:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id":1,
+    "name":"srihitha",
+    "age":20
+}
+
+### delete a user by id
+DELETE http://localhost:3000/user-api/users/3
+
+
+
+
+### Read all products
+GET http://localhost:3000/product-api/products
+
+### Read a product by brand
+GET http://localhost:3000/product-api/products/Mac
+
+### Create new product
+POST http://localhost:3000/product-api/products
+Content-Type: application/json
+
+{
+    "productId":1,
+    "name":"Laptop",
+    "brand":"Mac",
+    "price":92000
+}
+
+### Update a product
+PUT http://localhost:3000/product-api/products
+Content-Type: application/json
+
+{
+    "productId":1,
+    "name":"MacBook",
+    "Brand":"MacOs",
+    "price":95000
+}
+
+### delete a prodcut by productId
+DELETE http://localhost:3000/product-api/products/1
