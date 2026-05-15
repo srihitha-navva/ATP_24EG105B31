@@ -130,7 +130,7 @@ userApp.put("/cart/product-id/:pid",verifyToken,async(req,res) => {
 
     //before add,first it should check that product is already in the cart
     //if the product is there,then increment count by 1
-    //otherwise add that product ro cart
+    //otherwise add that product to cart
     
     
     let result=await UserModel.findOneAndUpdate({email:emailOfUser},{$push:{cart:{product:productId}}})

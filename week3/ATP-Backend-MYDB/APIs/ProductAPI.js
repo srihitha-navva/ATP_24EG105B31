@@ -1,4 +1,3 @@
-//create mini express application(seperate route)
 import exp from 'express'
 import { ProductModel } from '../models/ProductModel.js'
 import { hash,compare } from 'bcryptjs'
@@ -9,11 +8,13 @@ const {sign}=jwt
 
 config()
 
+//create mini express application(seperate route)
 
 export const productApp=exp.Router()
 
 //define product rest apis routes
-//create new products
+
+//create new products POST
 productApp.post("/products",async(req,res) => {
     //get new product obj from req
     const newProduct=req.body
@@ -26,7 +27,7 @@ productApp.post("/products",async(req,res) => {
     res.status(201).json({message:"Product created"})
 })
 
-//read all products
+//read all products GET
 productApp.get("/products",verifyToken,async(req,res) => {
     //read all products from db
     let productsList=await ProductModel.find()
@@ -34,7 +35,7 @@ productApp.get("/products",verifyToken,async(req,res) => {
     res.status(200).json({message:"Products:",payload:productsList})
 })
 
-//read a product by id
+//read a product by id GET by id
 productApp.get("/products/:id",verifyToken,async(req,res) => {
     //read object id from req params
     const pid=req.params.id
@@ -46,7 +47,7 @@ productApp.get("/products/:id",verifyToken,async(req,res) => {
     res.status(200).json({message:"Product",payload:productObj})
 })
 
-//update a product by productId
+//update a product by productId PUT
 productApp.put("/products/:id",verifyToken,async(req,res) => {
     //get modified product from req
     const modifiedProduct=req.body
@@ -57,7 +58,7 @@ productApp.put("/products/:id",verifyToken,async(req,res) => {
     res.status(200).json({message:"Product updated",payload:updatedProduct})
 })
 
-//delete a product by productId
+//delete a product by productId DELETE
 productApp.delete('/products/:id',verifyToken,async(req,res) => {
     //get id to be deleted
     const pid=req.params.id

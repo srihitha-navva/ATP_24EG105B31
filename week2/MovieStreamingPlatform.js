@@ -20,7 +20,6 @@ Tasks:
     4. find() movie "Joker"
     5. findIndex() of "Avengers"
 
-
 */
 
 const movies = [

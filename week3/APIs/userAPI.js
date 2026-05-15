@@ -12,7 +12,6 @@ let users =[]
 userApp.get('/users',(req,res) => { //(path, req handler -> callback function -> (request object,request response))
     //send response to client
     // dummy response for our understaidng --> res.json({message:"This res for GET users req"}) //js object not json
-
     //read all users and send response
     res.json({message:"all users",payload:users})
 }) 

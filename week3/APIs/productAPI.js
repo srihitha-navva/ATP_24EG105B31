@@ -12,13 +12,23 @@ export const productApp=exp.Router()
 
 let products=[]
 
-//2.
+//1. Create a new Product
+productApp.post('/products',(req,res) => {
+    //get product from client
+    const newProduct=req.body
+    //push newProduct into products
+    products.push(newProduct)
+    //send res
+    res.json({message:"Product added"})
+})
+
+//2. Read all Products
 productApp.get('/products',(req,res) => {
     //read all products
     res.json({message:"all products",payload:products})
 })
 
-//3. 
+//3. Read a product by brand
 productApp.get('/products/:brand',(req,res) => {
     //get brand of product from url parameter
     let brandOfUrl=(req.params.brand)
@@ -31,17 +41,8 @@ productApp.get('/products/:brand',(req,res) => {
     res.json({message:"Products by brand",payload:filteredBrand})
 })
 
-//1.
-productApp.post('/products',(req,res) => {
-    //get product from client
-    const newProduct=req.body
-    //push newProduct into products
-    products.push(newProduct)
-    //send res
-    res.json({message:"Product added"})
-})
 
-//4.
+//4. Update a product
 productApp.put('/products',(req,res) =>{
     //get modified product from client
     let modifiedProduct=req.body
@@ -56,7 +57,7 @@ productApp.put('/products',(req,res) =>{
     res.json({message:"Product updated"})
 })
 
-//5.
+//5. Delete a product by id
 productApp.delete('/products/:productId',(req,res) =>{
     //get index of product to be removed
     let idOfUrl=Number(req.params.productId)

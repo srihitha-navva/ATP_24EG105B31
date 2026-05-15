@@ -6,7 +6,7 @@ export const bookApp=exp.Router()
 
 //Define Book API routes
 
-//create a book
+//create a book -> POST
 bookApp.post('/books',async(req,res) => {
     const newBook=req.body
     const newBookDocument=new BookModel(newBook)
@@ -15,13 +15,13 @@ bookApp.post('/books',async(req,res) => {
     res.status(201).json({message:"Book created"})
 })
 
-//get all books
+//get all books -> GET
 bookApp.get('/books',async(req,res) => {
     let bookList=await BookModel.find()
     res.status(200).json({message:"Books:",payload:bookList})
 })
 
-//get book by bookId
+//get book by bookId -> GET
 bookApp.get('/books/:id',async(req,res) => {
     const bid=req.params.id
     const bookObj=await BookModel.findById(bid)
@@ -30,7 +30,7 @@ bookApp.get('/books/:id',async(req,res) => {
     res.status(200).json({message:"Book:",payload:bookObj})
 })
 
-//update book by bookId
+//update book by bookId -> PUT
 bookApp.put('/books/:id',async(req,res) => {
     const bid=req.params.id
     const modfiedBook=req.body
@@ -38,7 +38,7 @@ bookApp.put('/books/:id',async(req,res) => {
     res.status(200).json({message:"Book updated",payload:updatedBook})
 })
 
-//delete book by bookId
+//delete book by bookId -> DELETE
 bookApp.delete('/books/:id',async(req,res) => {
     const bid=req.params.id
     let deletedBook=await BookModel.findByIdAndDelete(bid)

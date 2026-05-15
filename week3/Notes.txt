@@ -116,4 +116,3 @@ NOTE: always stop the server and restart if any changes are made
 06-03-2026
 1. TCP IP and HTTP protocol relationship
 2. JS supports only single thread 
-3. 
